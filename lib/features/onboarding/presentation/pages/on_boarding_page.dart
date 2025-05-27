@@ -2,7 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:trackmind/core/utils/constants/styles.dart';
+import 'package:trackmind/core/utils/resources/app_router.dart';
 import 'package:trackmind/core/utils/resources/color_manager.dart';
 import 'package:trackmind/core/widgets/main_button.dart';
 import 'package:trackmind/features/onboarding/presentation/widgets/page_view_widget.dart';
@@ -46,7 +48,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: MainButton(
                           color: ColorManager.morning,
-                          onTap: () {},
+                          onTap: () {
+                            context.go(AppRouter.loginView);
+                          },
                           title: "Get Started"),
                     )
                   : Row(

@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:trackmind/features/Auth/presentation/views/pages/login_view.dart';
 import 'package:trackmind/features/onboarding/presentation/pages/on_boarding_page.dart';
 import 'package:trackmind/features/onboarding/presentation/pages/welcome_page.dart';
 
@@ -34,6 +35,10 @@ abstract class AppRouter {
       GoRoute(
         path: '/',
         builder: (context, state) => const OnBoardingPage(),
+      ),
+      GoRoute(
+        path: loginView,
+        builder: (context, state) => const LoginView(),
       ),
 
       // GoRoute(
