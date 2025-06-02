@@ -30,7 +30,7 @@ class MainButton extends StatelessWidget {
         width: width ?? MediaQuery.of(context).size.width,
         height: height ?? 50.h,
         decoration: BoxDecoration(
-          color: color ?? ColorManager.mainColor,
+          color: color ?? ColorManager.buttonColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Center(
@@ -43,7 +43,7 @@ class MainButton extends StatelessWidget {
               : Text(
                   title,
                   style: TextStyle(
-                    color: textColor ?? Colors.white,
+                    color: textColor ?? ColorManager.eclipse,
                     fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
                   ),

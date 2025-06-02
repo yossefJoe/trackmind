@@ -1,5 +1,8 @@
 import 'package:go_router/go_router.dart';
+import 'package:trackmind/features/Auth/presentation/views/pages/create_account_view.dart';
+import 'package:trackmind/features/Auth/presentation/views/pages/forget_password_view.dart';
 import 'package:trackmind/features/Auth/presentation/views/pages/login_view.dart';
+import 'package:trackmind/features/home/presentation/views/pages/nav_bar_view.dart';
 import 'package:trackmind/features/onboarding/presentation/pages/on_boarding_page.dart';
 import 'package:trackmind/features/onboarding/presentation/pages/welcome_page.dart';
 
@@ -39,6 +42,18 @@ abstract class AppRouter {
       GoRoute(
         path: loginView,
         builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: signUpView,
+        builder: (context, state) => const CreateAccountView(),
+      ),
+      GoRoute(
+        path: forgetPassword,
+        builder: (context, state) => const ForgetPasswordView(),
+      ),
+      GoRoute(
+        path: navBarView,
+        builder: (context, state) => const NavigateBarView(),
       ),
 
       // GoRoute(

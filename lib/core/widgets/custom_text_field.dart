@@ -12,8 +12,9 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final FocusNode? focusNode;
   final List<TextInputFormatter>? inputFormatters;
-  final Widget? prefix;
+  final IconData? prefix;
   final Function(String)? onChanged;
+  final Color? fillColor;
 
   CustomTextField(
       {super.key,
@@ -26,7 +27,8 @@ class CustomTextField extends StatefulWidget {
       this.focusNode,
       this.inputFormatters,
       this.prefix,
-      this.onChanged});
+      this.onChanged,
+      this.fillColor});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -34,6 +36,8 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   bool isPasswordVisible = false;
+  Color writingColor = ColorManager.morning;
+  Color notWritingColor = ColorManager.eclipse;
 
   @override
   void initState() {
@@ -47,7 +51,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: TextFormField(
-        onChanged: widget.onChanged,
+        onChanged: (value) {
+          setState(() {
+            notWritingColor =
+                value.isEmpty ? ColorManager.eclipse : ColorManager.morning;
+          });
+        },
         inputFormatters: widget.inputFormatters ?? [],
         focusNode: widget.focusNode,
         validator: widget.validator,
@@ -60,9 +69,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
               color: ColorManager.greylight,
               fontWeight: FontWeight.bold,
               fontSize: 16.sp),
-          prefixIcon: widget.prefix,
+          prefixIcon: Icon(
+            widget.prefix,
+            color: notWritingColor,
+          ),
           filled: true,
-          fillColor: Colors.white,
+          fillColor: widget.fillColor ?? ColorManager.morning.withOpacity(0.2),
           suffixIcon: widget.obscureText
               ? IconButton(
                   onPressed: () {
@@ -82,14 +94,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               width: 1,
-              color: ColorManager.mainColor,
+              color: Colors.transparent,
             ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               width: 1,
-              color: Color(0xFFD3D3D3),
+              color: Colors.transparent,
             ),
           ),
           border: OutlineInputBorder(
@@ -114,7 +126,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ),
         ),
-        style: const TextStyle(color: Colors.black),
+        style: TextStyle(color: writingColor),
       ),
     );
   }
