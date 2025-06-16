@@ -4,6 +4,7 @@ import 'package:trackmind/core/utils/constants/styles.dart';
 import 'package:trackmind/core/utils/resources/assets.dart';
 import 'package:trackmind/core/utils/resources/color_manager.dart';
 import 'package:trackmind/features/home/presentation/views/widgets/habit_box.dart';
+import 'package:trackmind/features/home/presentation/views/widgets/habit_calender_section.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -134,14 +135,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-              Row(
-                children: [
-                  habitBox(
-                    backgroundColor: Colors.transparent, // light pink
-                    triangleColor: Color(0xFFEF6743), // bold red
-                  ),
-                ],
-              )
+              HabitTable(),
             ],
           ),
         ));
