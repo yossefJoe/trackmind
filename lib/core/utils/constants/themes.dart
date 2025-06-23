@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:trackmind/core/utils/resources/color_manager.dart';
 
 class ProjectThemes {
   static ThemeData lightTheme = ThemeData(
+    primaryTextTheme: TextTheme(
+      headlineLarge: const TextStyle(
+        color: ColorManager.eclipse,
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+      ),
+      bodyLarge: const TextStyle(
+        color: ColorManager.eclipse,
+        fontSize: 16,
+      ),
+      bodyMedium: const TextStyle(
+        color: ColorManager.eclipse,
+        fontSize: 14,
+      ),
+      labelLarge: const TextStyle(
+        color: ColorManager.eclipse,
+        fontSize: 14,
+      ),
+    ),
     listTileTheme: const ListTileThemeData(
         tileColor: ColorManager.whiteColor,
         selectedTileColor: ColorManager.black,
@@ -11,7 +31,7 @@ class ProjectThemes {
     primaryColorLight: ColorManager.black,
     dropdownMenuTheme: DropdownMenuThemeData(
       textStyle: const TextStyle(
-        color: ColorManager.black,
+        color: ColorManager.eclipse,
       ),
       menuStyle: MenuStyle(
         backgroundColor:
@@ -19,6 +39,11 @@ class ProjectThemes {
       ),
     ),
     appBarTheme: const AppBarTheme(
+      titleTextStyle: TextStyle(
+        color: ColorManager.eclipse,
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
+      ),
       backgroundColor: ColorManager.whiteColor,
       iconTheme: IconThemeData(color: ColorManager.black),
       actionsIconTheme: IconThemeData(color: ColorManager.black),

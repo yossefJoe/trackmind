@@ -17,4 +17,6 @@ class Assets {
   static const String nav3 = 'assets/images/nav3.png';
   static const String nav4 = 'assets/images/nav4.png';
   static const String floating = 'assets/images/add.png';
+  static const String addBook = 'assets/images/fa-solid_book-reader.png';
+  static const String check = 'assets/images/check.png';
 }

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:trackmind/core/utils/constants/styles.dart';
 import 'package:trackmind/core/utils/resources/assets.dart';
 import 'package:trackmind/core/utils/resources/color_manager.dart';
-import 'package:trackmind/features/home/presentation/views/widgets/habit_box.dart';
+import 'package:trackmind/core/widgets/CustomAppbar.dart';
 import 'package:trackmind/features/home/presentation/views/widgets/habit_calender_section.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,49 +53,31 @@ class _HomePageState extends State<HomePage> {
         ),
         key: scaffoldKey,
         backgroundColor: ColorManager.lightScafold,
-        appBar: AppBar(
-          elevation: 0,
-          leadingWidth: 100.w,
-          title: Text(
-            'HomePage',
-            style: Styles.textStyle16,
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.transparent,
-          leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: ColorManager.lightEclipse,
-              ),
-              child: IconButton(
-                icon: Icon(Icons.menu, color: ColorManager.eclipse),
-                onPressed: () => scaffoldKey.currentState?.openDrawer(),
-              ),
-            ),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: CircleAvatar(
-                backgroundColor: ColorManager.lightEclipse,
-                child: Container(
-                  width: 40.w,
-                  height: 40.h,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(
-                          Assets.user), // Replace with your image path
-                      fit: BoxFit.cover,
+        appBar: CustomAppbar(
+            "Home Page",
+            context,
+            [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: CircleAvatar(
+                  backgroundColor: ColorManager.lightEclipse,
+                  child: Container(
+                    width: 40.w,
+                    height: 40.h,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage(
+                            Assets.user), // Replace with your image path
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
+            ],
+            true,
+            scaffoldKey,(){}),
         body: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(

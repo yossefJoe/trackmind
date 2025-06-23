@@ -5,6 +5,7 @@ import 'package:trackmind/core/utils/constants/styles.dart';
 import 'package:trackmind/core/utils/resources/app_router.dart';
 import 'package:trackmind/core/utils/resources/assets.dart';
 import 'package:trackmind/core/utils/resources/color_manager.dart';
+import 'package:trackmind/core/widgets/custom_back_button.dart';
 import 'package:trackmind/core/widgets/custom_text_field.dart';
 import 'package:trackmind/core/widgets/main_button.dart';
 import 'package:trackmind/features/Auth/presentation/views/widgets/another_type_auth_widget.dart';
@@ -23,22 +24,11 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
     return Scaffold(
       backgroundColor: ColorManager.lightScafold,
       appBar: AppBar(
-          leadingWidth: 100.w,
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: ColorManager.lightEclipse,
-              ),
-              child: IconButton(
-                icon: Icon(Icons.arrow_back, color: ColorManager.eclipse),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ),
-          )),
+        leadingWidth: 100.w,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading:  CustomBackButton(onPressed: () => Navigator.of(context).pop()),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),

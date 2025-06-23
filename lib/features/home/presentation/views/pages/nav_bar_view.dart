@@ -1,12 +1,16 @@
 import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:trackmind/core/utils/resources/app_router.dart';
 import 'package:trackmind/core/utils/resources/assets.dart';
 import 'package:trackmind/core/utils/resources/color_manager.dart';
 import 'package:trackmind/features/home/presentation/views/pages/home_page.dart';
+import 'package:trackmind/features/home/presentation/views/pages/new_habit_screen.dart';
+import 'package:trackmind/features/quotes/presentation/quotes_page.dart';
 
 class NavigateBarView extends StatefulWidget {
-  const NavigateBarView({super.key});
-
+  const NavigateBarView({super.key, this.isInNewHabitPage});
+  final bool? isInNewHabitPage;
   @override
   State<NavigateBarView> createState() => _NavigateBarViewState();
 }
@@ -14,18 +18,12 @@ class NavigateBarView extends StatefulWidget {
 class _NavigateBarViewState extends State<NavigateBarView> {
   int selectedIndex = 0;
 
-  List<Widget> list = [
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
-    HomePage(),
-  ];
-
   void _onItemTapped(int index) {
     if (index == 2) {
       // Perform your special action for index 2
-      _showModal(); // Example: Open a modal
+      widget.isInNewHabitPage == true
+          ? saveNewHabit()
+          : _navigateToNewHabitPage(); // Example: Open a modal
     } else {
       setState(() {
         selectedIndex = index;
@@ -33,20 +31,8 @@ class _NavigateBarViewState extends State<NavigateBarView> {
     }
   }
 
-  void _showModal() {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Container(
-          padding: EdgeInsets.all(16),
-          height: 200,
-          child: Center(
-            child: Text("Special Action Triggered!",
-                style: TextStyle(fontSize: 18)),
-          ),
-        );
-      },
-    );
+  void _navigateToNewHabitPage() {
+    context.go(AppRouter.navBarView, extra: true);
   }
 
   double iconSize = 50;
@@ -55,12 +41,28 @@ class _NavigateBarViewState extends State<NavigateBarView> {
     super.initState();
   }
 
+  void saveNewHabit() {
+    // Implement your save logic here
+    // For example, you might want to save the new habit to a database or state management solution
+    print("New habit saved!");
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> list = [
+      widget.isInNewHabitPage == true
+          ? const NewHabitScreen()
+          : const HomePage(),
+      QuotesPage(),
+      HomePage(),
+      HomePage(),
+      HomePage(),
+    ];
     List<Widget> icons = [
       navbarItem(0, Assets.nav1),
       navbarItem(1, Assets.nav2),
-      navbarItem(2, Assets.floating),
+      navbarItem(
+          2, widget.isInNewHabitPage == true ? Assets.check : Assets.floating),
       navbarItem(3, Assets.nav3),
       navbarItem(4, Assets.nav4),
     ];

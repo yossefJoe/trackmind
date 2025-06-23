@@ -95,7 +95,8 @@ class _CreateAccountViewState extends State<CreateAccountView> {
                   const SizedBox(height: 10),
                   MainButton(
                       onTap: () {
-                        context.go(AppRouter.navBarView);
+                        context.go(AppRouter.navBarView,
+                            extra: false); // Navigate to home view
                       },
                       title: 'Create Account'),
                   const SizedBox(height: 10),

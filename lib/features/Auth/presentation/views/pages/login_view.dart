@@ -104,7 +104,8 @@ class _LoginViewState extends State<LoginView> {
                         controller: passwordController,
                         inputType: TextInputType.text),
                     MainButton(onTap: () {
-                      context.go(AppRouter.navBarView);
+                      context.go(AppRouter.navBarView,
+                          extra: false); // Navigate to home view
                     }, title: 'Login'),
                     SizedBox(height: 10.h),
                     TextButton(
